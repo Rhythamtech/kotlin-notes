@@ -1,0 +1,88 @@
+    val intList = listOf<Int>(5, 12)
+    val stringList = listOf<String>("1", "2", "3", "4")
+
+// Mutablelists
+    val intList = mutableListOf<Int>(5, 12)
+    val stringList = mutableListOf<String>("1", "2", "3", "4")
+
+// Array
+    val intList = arrayOf<Int>(5, 12)
+    val stringList = arrayOf<String>("1", "2", "3", "4")
+
+// Sized array
+    var table = Array<String>(words.size) { "" }
+    val literals = arrayOf<String>("January", "February", "March")
+
+// Create 2D Array
+    val grid = Array(rows) { Array(cols) { Any() } }
+
+//String[] in Java equivalent Array<String> in Kotlin
+//eg.
+    var array1: Array<String?> = emptyArray()
+    var array2: Array<String?> = arrayOfNulls(4)
+    var array3: Array<String> = arrayOf("Mashroom", "Kitkat", "Oreo", "Lolipop")
+    val num = arrayOf(1, 2, 3, 4) //implicit type declaration
+    val num = arrayOf<Int>(1, 2, 3) //explicit type declaration
+
+// Or We can also create typed lists, arrays, mutable lists
+    val intList = listOf<Int>(5, 12)
+    val listSample: List<Int> = listOf(1, 2, 3)
+    val mutableListSample: MutableList<Int> = mutableListOf(1, 2, 3)
+    val stringList = listOf<String>("1", "2", "3", "4")
+    val stringListSample: List<String> = listOf<String>("1", "2", "3", "4")
+    var initList = List(4) { "s" } // {"s", "s", "s", "s"}
+
+// Arrays
+    val intArray = arrayOf(1, 2, 3)
+    val intArray2: Array<Int> = arrayOf(1, 2, 3)
+    val intArray3 = intArrayOf(1, 2, 3)
+    val charArray = charArrayOf('a', 'b', 'c')
+    val intArray = arrayOf(1, 2, 3)
+    val intArray2: Array<Int> = arrayOf(1, 2, 3)
+    val stringArray = arrayOf("genesis", "melo")
+    val stringArray2: Array<String> = arrayOf("genesis", "melo")
+    val stringOrNulls = arrayOfNulls<String>(5) // returns Array<String?>
+    val stringOrNulls2: Array<String?> = arrayOf("", null)// returns Array<String?>
+    var emptyStringArray: Array<String> = emptyArray()
+    var emptyStringArray2: Array<String> = arrayOf()
+    var sizedEmptyArray = Array(4) { "s" } // {"s", "s", "s", "s"}
+
+// In this line, we create an array from a range of numbers.
+    val nums3 = IntArray(5, { i -> i * 2 + 3 })
+
+// This line creates an array with IntArray. It takes the number of elements and a
+    factory function as parameters .
+// This is the output.
+    /*
+    [1, 2, 3, 4, 5]
+    [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    [3, 5, 7, 9, 11]
+    */
+
+// We can read this as initialize an array of 5 elements, assign each item to its
+    index times two
+    val array = Array(5) { it * 2 }
+// OR -> val array = List(5) {it * 2}
+    println(array.joinToString()) // 0, 2, 4, 6, 8
+
+    val list = List(5) { it.times(2) } // Creates List: [0, 2, 4, 6, 8]
+    val array = Array<Int>(5) { e -> if (e % 2 == 0) 2 else 1 }
+    println(array.asList())
+
+    val array = List<String>(5) { e -> if (e % 2 == 0) "even" else "$e" }
+    println(array.joinToString()) // Prints: even, 1, even, 3, even
+
+// Loop array with indices
+    val swarm = listOf(5, 12, 15, 17)
+    for (i in 0 until swarm.size) {
+        print("$i ") // 0 1 2 3
+    }
+    for (i in 0..swarm.size - 1) {
+        print("$i ") // 0 1 2 3
+    }
+    for (i in swarm.indices) {
+        print("$i ") // 0 1 2 3
+    }
+    for (indexValuePair in swarm.withIndex()) {
+        print("index: ${indexValuePair.index}, value: ${indexValuePair.value}\n")
+    } // Prints: index: 0, value: 5

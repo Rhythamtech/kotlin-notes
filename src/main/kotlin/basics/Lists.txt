@@ -1,0 +1,156 @@
+listOf(1, 2, 3)
+// [1, 2, 3]
+
+val l2 = List(5){ "No. $it" }
+val l3 = List(5){ idx -> "No. $idx" }
+// [No. 0, No. 1, No. 2, No. 3, No. 4]
+
+val l4 = "word-salad".toList()
+// [w, o, r, d, -, s, a, l, a, d]
+
+val m1 = mapOf(
+1 to "Gold",
+2 to "Silver",
+3 to "Bronze"
+).toList()
+// [(1, Gold), (2, Silver), (3, Bronze)]
+
+generateSequence {
+Random.nextInt(100).takeIf { it > 30 }
+}.toList()
+// [45, 75, 74, 31, 54, 36, 63]
+
+(0..5).toList()
+// [0, 1, 2, 3, 4, 5]
+
+val mutList = mutableListOf(1, 2, 3)
+val otherList = mutList.toList()
+mutList[0] = 5
+mutList
+// [5, 2, 3]
+otherList
+// [1, 2, 3]
+
+val myList = listOf("A", "B", "C")
+myList.get(0)
+myList[0]
+myList.getOrNull(3)
+val test = myList.getOrElse(3) {
+println("There is no index $it")
+":("
+}
+// There is no index 3
+// :(
+val listOfNullableItems = listOf(1, 2, null, 4)
+// Elvis operator checks if item at index 2 null, if it is null it returns 0,
+// returns the element at index 2 otherwise
+
+val item = listOfNullableItems[2] ?: 0
+val myList1 = listOf("a", "b", "c", "d", "e")
+myList1.slice(listOf(0, 2, 4))
+// [a, c, e]
+
+myList1.slice(0..3)
+// [a, b, c, d]
+
+myList1.slice(0..myList1.lastIndex step 2)
+// [a, c, e]
+
+myList1.slice(2 downTo 0)
+// [c, b, a]
+
+mutableListOf(1, 2, 3)
+// [1, 2, 3]
+
+(0..5).toMutableList()
+// [0, 1, 2, 3, 4, 5]
+
+listOf(1, 2, 3).toMutableList()
+// [1, 2, 3]
+
+val m = mutableListOf(1, 2, 3)
+m.add(4)
+m += 4
+// [1, 2, 3, 4, 4]
+m.add(2, 10)
+// [1, 2, 10, 3, 4, 4]
+// Append a list to another list
+m += listOf(5, 6, 7)
+// [1, 2, 10, 3, 4, 4, 5, 6, 7]
+
+val mList = mutableListOf(1, 2, 3, 3, 3, 4)
+mList -= 3
+mList.remove(3)
+// [1, 2, 3, 4]
+// Removes all instances of given elements from the mList
+mList -= listOf(1, 4)
+// [2, 3]
+mList.removeAt(1)
+// [2]
+mList[0] = 5
+// [5]
+
+val fruits = mutableListOf("Apple", "Apricot", "Cherry")
+fruits.fill("sugar")
+// [sugar, sugar, sugar]
+fruits.clear()
+// []
+
+// The following will create a new list and return it
+val list = listOf(3, 1, 4, 1, 5, 9)
+list.shuffled()
+// [5, 3, 4, 1, 1, 9]
+list.sorted()
+// [1, 1, 3, 4, 5, 9]
+list.reversed()
+// [9, 5, 1, 4, 1, 3]
+
+// The following will do the operations "in-place" without creating a new list
+val mm = list.toMutableList()
+mm.shuffle()
+// [5, 3, 4, 1, 1, 9]
+mm.sort()
+// [1, 1, 3, 4, 5, 9]
+mm.reverse()
+// [9, 5, 1, 4, 1, 3]
+
+val numbers = mutableListOf(3, 1, 4, 1, 5 ,9)
+numbers.removeAll { it < 5 }
+// [5, 9]
+
+val letters = mutableListOf('a', 'b', '3', 'd', '5')
+letters.retainAll { it.isLetter() }
+// [a, b, d]
+
+val letters2 = mutableListOf("A", "B", "C", "D")
+val sub = letters2.subList(1, 4) // [ inclusive, exclusive )
+// [B, C, D]
+// There is only one list here, sub list is just a reference, a view of letters2
+// And they are reflecting each other
+letters2[1] = "Z"
+println(sub)
+// [Z, C, D]
+
+sub[2] = "MM"
+println(letters2)
+// [A, Z, C, MM]
+sub.fill("FF")
+println(letters2)
+// [A, FF, FF, FF]
+sub.clear()
+println(letters2)
+// [A]
+letters2.clear()
+// println(sub) // ERROR// Because there is no more original list
+
+val nums = mutableListOf(1, 2 ,3, 4)
+// A reversed view of nums
+val smun = nums.asReversed()
+println(smun)
+// [4, 3, 2, 1]
+nums[1] = 99
+println(smun)
+// [4, 3, 99, 1]
+smun[2] = -1
+println(nums)
+// [1, -1, 3, 4]
